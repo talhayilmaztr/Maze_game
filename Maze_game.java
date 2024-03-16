@@ -62,6 +62,7 @@ public class Maze_game {
         while (isGameRunning) {
             printMaze(maze);
             collectBonus(maze, bonus_index_counter, bonus, player_row, player_column);
+            mine(maze, bonus, counter, player_row, player_column);
 
             System.out.println("Your step count: " + counter[0]);
             System.out.println("Your current position: " + player_row[0] + "." + player_column[0]);
@@ -133,6 +134,12 @@ public class Maze_game {
             counter[0]++;
         } else {
             System.out.println("Cannot move left!");
+        }
+    }
+    public static void mine(char maze[][], char bonus[], int counter[], int player_row[], int player_column[]) {
+
+        if (maze[player_row[0]][player_column[0]] == '!') {
+            System.out.println("You hit a mine!");
         }
     }
     public static void collectBonus(char maze[][], int bonus_index_counter[], char bonus[], int player_row[], int player_column[]) {
