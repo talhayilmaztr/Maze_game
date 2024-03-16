@@ -31,6 +31,7 @@ public class Maze_game {
         int[] player_row = new int[1];
         int[] player_column = new int[1];
 
+        char bonus[] = new char[20];
         int[] counter = new int[1];
         int bonus_index_counter[] = new int[1];
 
@@ -60,7 +61,7 @@ public class Maze_game {
         boolean isGameRunning = true;
         while (isGameRunning) {
             printMaze(maze);
-            collectBonus(maze, bonus_index_counter, player_row, player_column);
+            collectBonus(maze, bonus_index_counter, bonus, player_row, player_column);
 
             System.out.println("Your step count: " + counter[0]);
             System.out.println("Your current position: " + player_row[0] + "." + player_column[0]);
@@ -134,25 +135,29 @@ public class Maze_game {
             System.out.println("Cannot move left!");
         }
     }
-    public static void collectBonus(char labyrinth[][], int bonus_index_counter[], int player_row[], int player_column[]) {
+    public static void collectBonus(char maze[][], int bonus_index_counter[], char bonus[], int player_row[], int player_column[]) {
         int count = bonus_index_counter[0];
 
-        if (labyrinth[player_row[0]][player_column[0]] == 'R') {
+        if (maze[player_row[0]][player_column[0]] == 'R') {
+            bonus[count] = maze[player_row[0]][player_column[0]];
             bonus_index_counter[0]++;
             System.out.println("R bonus added to your bonus list.");
-            labyrinth[player_row[0]][player_column[0]] = '.';
-        } else if (labyrinth[player_row[0]][player_column[0]] == 'F') {
+            maze[player_row[0]][player_column[0]] = '.';
+        } else if (maze[player_row[0]][player_column[0]] == 'F') {
+            bonus[count] = maze[player_row[0]][player_column[0]];
             bonus_index_counter[0]++;
             System.out.println("F bonus added to your bonus list.");
-            labyrinth[player_row[0]][player_column[0]] = '.';
-        } else if (labyrinth[player_row[0]][player_column[0]] == 'T') {
+            maze[player_row[0]][player_column[0]] = '.';
+        } else if (maze[player_row[0]][player_column[0]] == 'T') {
+            bonus[count] = maze[player_row[0]][player_column[0]];
             bonus_index_counter[0]++;
             System.out.println("T bonus added to your bonus list.");
-            labyrinth[player_row[0]][player_column[0]] = '.';
-        } else if (labyrinth[player_row[0]][player_column[0]] == 'H') {
+            maze[player_row[0]][player_column[0]] = '.';
+        } else if (maze[player_row[0]][player_column[0]] == 'H') {
+            bonus[count] = maze[player_row[0]][player_column[0]];
             bonus_index_counter[0]++;
             System.out.println("H bonus added to your bonus list.");
-            labyrinth[player_row[0]][player_column[0]] = '.';
+            maze[player_row[0]][player_column[0]] = '.';
         }
     }
 
