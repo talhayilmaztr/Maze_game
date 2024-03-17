@@ -139,9 +139,36 @@ public class Maze_game {
     public static void mine(char maze[][], char bonus[], int counter[], int player_row[], int player_column[]) {
 
         if (maze[player_row[0]][player_column[0]] == '!') {
-            System.out.println("You hit a mine!");
+            FBonus(bonus, maze, counter, player_row, player_column);
         }
     }
+    public static void FBonus(char bonus[], char maze[][], int counter[], int player_row[], int player_column[]) {
+        boolean foundFbonus = false;
+        for (int i = 0; i < bonus.length; i++) {
+            if (bonus[i] == 'F') {
+                System.out.println("You have found the F bonus, please defuse the mine..");
+                foundFbonus = true;
+                bonus[i] = ' ';
+                break;
+            }
+        }
+        while (foundFbonus) {
+            char F = input.next().charAt(0);
+            if (F == 'F') {
+                maze[player_row[0]][player_column[0]] = '.';
+                System.out.println("The mine has been defused..");
+                break;
+            } else {
+                System.out.println("Please enter F.");
+            }
+        }
+        if (!foundFbonus) {
+            System.out.println("F Bonus not found, the bomb exploded, your step count increased by 5..");
+            maze[player_row[0]][player_column[0]] = '.';
+            counter[0] += 5;
+        }
+    }
+
     public static void collectBonus(char maze[][], int bonus_index_counter[], char bonus[], int player_row[], int player_column[]) {
         int count = bonus_index_counter[0];
 
