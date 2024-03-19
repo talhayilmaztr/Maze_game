@@ -221,6 +221,27 @@ public class Maze_game {
             counter[0]++;
         }
 }
+    public static void Hbonus(int counter[], char bonus[], char maze[][]) {
+        boolean bonusFound = false;
+        for (int i = 0; i < 20; i++) {
+            if (bonus[i] == 'H') {
+                bonusFound = true;
+                bonus[i] = ' ';
+            }
+        }
+        if (bonusFound == true) {
+            if (counter[0] >= 2) {
+                System.out.println("Bonus usage successful");
+                counter[0] -= 2;
+            } else {
+                System.out.println("Bonus usage successful");
+                counter[0] = 0;
+            }
+        }
+        if (bonusFound == false) {
+            System.out.println("Bonus not found!!");
+        }
+}
 
     public static void collectBonus(char maze[][], int bonus_index_counter[], char bonus[], int player_row[], int player_column[]) {
         int count = bonus_index_counter[0];
