@@ -142,6 +142,12 @@ public class Maze_game {
             FBonus(bonus, maze, counter, player_row, player_column);
         }
     }
+    public static void wall(char maze[][], char bonus[], int counter[], int player_row[], int player_column[]) {
+
+        if (maze[player_row[0]][player_column[0]] == '#') {
+            Rbonus(maze, bonus, counter, player_row, player_column);
+        }
+}
     public static void FBonus(char bonus[], char maze[][], int counter[], int player_row[], int player_column[]) {
         boolean foundFbonus = false;
         for (int i = 0; i < bonus.length; i++) {
@@ -168,6 +174,51 @@ public class Maze_game {
             counter[0] += 5;
         }
     }
+    
+    public static void Rbonus(char maze[][], char bonus[], int counter[], int player_row[], int player_column[]) {
+        boolean bonusFound = false;
+
+        System.out.println("You encountered a wall!!");
+        for (int i = 0; i < bonus.length; i++) {
+            if (bonus[i] == 'R') {
+                bonusFound = true;
+
+            }
+        }
+        if (bonusFound == true) {
+            System.out.println("You have an R bonus, use it to remove the wall (R) ..");
+            char R = input.next().charAt(0);
+            if (R == 'R') {
+                for (int b = 0; b < bonus.length; b++) {
+                    if (bonus[b] == 'R') {
+                        bonus[b] = ' ';
+                        break;
+                    }
+                }
+                if (player_row[0] < 14 && maze[player_row[0] + 1][player_column[0]] == '#') {
+                    maze[player_row[0] + 1][player_column[0]] = '.';
+                    player_row[0]++;
+                    System.out.println("Bonus usage successful");
+                } else if (player_row[0] > 0 && maze[player_row[0] - 1][player_column[0]] == '#') {
+                    maze[player_row[0] - 1][player_column[0]] = '.';
+                    player_row[0]--;
+                    System.out.println("Bonus usage successful");
+                } else if (player_column[0] < 14 && maze[player_row[0]][player_column[0] + 1] == '#') {
+                    maze[player_row[0]][player_column[0] + 1] = '.';
+                    player_column[0]++;
+                    System.out.println("Bonus usage successful");
+                } else if (player_column[0] > 0 && maze[player_row[0]][player_column[0] - 1] == '#') {
+                    maze[player_row[0]][player_column[0] - 1] = '.';
+                    player_column[0]--;
+                    System.out.println("Bonus usage successful");
+                }
+            }
+        }
+        if (bonusFound == false) {
+            System.out.println("You don't have an R bonus, you can't go this way..");
+            counter[0]++;
+        }
+}
 
     public static void collectBonus(char maze[][], int bonus_index_counter[], char bonus[], int player_row[], int player_column[]) {
         int count = bonus_index_counter[0];
