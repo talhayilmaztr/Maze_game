@@ -63,6 +63,8 @@ public class Maze_game {
             printMaze(maze);
             collectBonus(maze, bonus_index_counter, bonus, player_row, player_column);
             mine(maze, bonus, counter, player_row, player_column);
+            wall(maze, bonus, counter, player_row, player_column);
+
 
             System.out.println("Your step count: " + counter[0]);
             System.out.println("Your current position: " + player_row[0] + "." + player_column[0]);
