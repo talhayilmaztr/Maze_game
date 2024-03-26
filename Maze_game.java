@@ -242,6 +242,41 @@ public class Maze_game {
             System.out.println("Bonus not found!!");
         }
 }
+public static void Tbonus(char bonus[], int counter[], char maze[][], int player_row[], int player_column[]) {
+
+    boolean foundTbonus = false;
+        for (int i = 0; i < bonus.length; i++) {
+    if (bonus[i] == 'T') {
+        foundTbonus = true;
+
+            System.out.println("Enter the x and y coordinates of the location you want to teleport to..");
+            bonus[i] = ' ';
+            break;
+        }
+    }
+    if (!foundTbonus) {
+        System.out.println("You don't have a T bonus");
+    }
+    while (foundTbonus) {
+        System.out.print("x:");
+        int x = input.nextInt();
+        System.out.print("y:");
+        int y = input.nextInt();
+        if (x >= 0 && x < maze.length && y >= 0 && y < maze[0].length) {
+
+            if (maze[x][y] != '!' && maze[x][y] != '#') {
+                player_column[0] = y;
+                player_row[0] = x;
+                counter[0]++;
+                foundTbonus = false;
+            } else {
+                System.out.println("You arrived at '" + maze[x][y] + "'. Please enter again.");
+            }
+        } else {
+            System.out.println("Labirynth border exceeded. Please enter again.");
+        }
+    }
+}
 
     public static void collectBonus(char maze[][], int bonus_index_counter[], char bonus[], int player_row[], int player_column[]) {
         int count = bonus_index_counter[0];
