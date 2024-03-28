@@ -277,6 +277,32 @@ public static void Tbonus(char bonus[], int counter[], char maze[][], int player
         }
     }
 }
+    public static void useBonus(char bonus[], char maze[][], int counter[], int player_row[], int player_column[]) {
+
+        System.out.println("Enter the bonus you want to use: (H, T, F, R)");
+        char letter = input.next().charAt(0);
+        switch (letter) {
+            case 'T':
+                Tbonus(bonus, counter, maze, player_row, player_column);
+                break;
+            case 'R':
+                if (maze[player_row[0]][player_column[0]] != '#') {
+                    System.out.println("The R bonus can only be used when encountering a wall..");
+                }
+                break;
+            case 'F':
+                if (maze[player_row[0]][player_column[0]] != '!') {
+                    System.out.println("The F bonus can only be used when encountering a mine.");
+                }
+                break;
+            case 'H':
+                Hbonus(counter, bonus, maze);
+                break;
+            default:
+                System.out.println("Please enter a valid bonus type! (H, T, F, R)");
+                break;
+        }
+    }
 
     public static void collectBonus(char maze[][], int bonus_index_counter[], char bonus[], int player_row[], int player_column[]) {
         int count = bonus_index_counter[0];
