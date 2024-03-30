@@ -1,4 +1,5 @@
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Maze_game {
@@ -329,5 +330,49 @@ public static void Tbonus(char bonus[], int counter[], char maze[][], int player
             maze[player_row[0]][player_column[0]] = '.';
         }
     }
+    public static void distributeBonus(char maze[][], char randomBonus[], int player_row[], int player_column[]) {
+        Random random = new Random();
+        int bonusCount = 0;
+        int index = 0, bonusX, bonusY;
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[0].length; j++) {
+                switch (maze[i][j]) {
+                    case 'F':
+                        bonusCount++;
+                        randomBonus[index] = maze[i][j];
+                        maze[i][j] = '.';
+                        index++;
+                        break;
+                    case 'R':
+                        bonusCount++;
+                        randomBonus[index] = maze[i][j];
+                        maze[i][j] = '.';
+                        index++;
+                        break;
+                    case 'T':
+                        bonusCount++;
+                        randomBonus[index] = maze[i][j];
+                        maze[i][j] = '.';
+                        index++;
+                        break;
+                    case 'H':
+                        bonusCount++;
+                        randomBonus[index] = maze[i][j];
+                        maze[i][j] = '.';
+                        index++;
+                        break;
+                }
+            }
+        }
+        int x = index;
+        while (bonusCount > 0 && x > 0) {
+            bonusX = random.nextInt(14);
+            bonusY = random.nextInt(14);
+            if ((maze[bonusX][bonusY] == '.')) {
+                maze[bonusX][bonusY] = randomBonus[x - 1];
+                x--;
+            }
+        }
+}
 
 }
