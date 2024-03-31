@@ -374,5 +374,25 @@ public static void Tbonus(char bonus[], int counter[], char maze[][], int player
             }
         }
 }
+public static void distributeMines(char maze[][]) {
+    Random random = new Random();
+    int mineCount = 0;
+    for (int i = 0; i < maze.length; i++) {
+        for (int j = 0; j < maze[0].length; j++) {
+            if (maze[i][j] == '!') {
+                mineCount++;
+                maze[i][j] = '.';
+            }
+        }
+    }
+    while (mineCount > 0) {
+        int mineX = random.nextInt(maze.length);
+        int mineY = random.nextInt(maze[0].length);
+        if (maze[mineX][mineY] == '.') {
+            maze[mineX][mineY] = '!';
+            mineCount--;
+        }
+    }
+}
 
 }
