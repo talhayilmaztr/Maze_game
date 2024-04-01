@@ -32,6 +32,7 @@ public class Maze_game {
         int[] player_row = new int[1];
         int[] player_column = new int[1];
 
+        char randomBonus[] = new char[20];
         char bonus[] = new char[20];
         int[] counter = new int[1];
         int bonus_index_counter[] = new int[1];
@@ -86,6 +87,14 @@ public class Maze_game {
                     break;
 
             }
+            if (counter[0] % 5 == 0 && counter[0] > 0) {
+                distributeBonus(maze, randomBonus, player_row, player_column);
+                 distributeMines(maze);
+             }
+             if (player_row[0] == end_row && player_column[0] == end_row) {
+                 System.out.println("You have reached point E! The game has been successfully completed. Congratulations!");
+                 break;
+             }
 
         }
     }
