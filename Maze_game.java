@@ -109,13 +109,18 @@ public class Maze_game {
         System.out.println();
     }
 
-    public static void up(int counter[], char maze[][], int player_row[], int player_column[]) {
+    public static void up(int counter[], char maze[][], int player_row[], int player_column[], char bonus[]) {
+
         if (player_row[0] > 0) {
-            player_row[0]--;
-            System.out.println("Moved up and your current position is: " + player_row[0] + "." + player_column[0]);
-            counter[0]++;
+            if (maze[player_row[0] - 1][player_column[0]] != '#') {
+                player_row[0]--;
+                System.out.println("You went up and your current position is: " + player_row[0] + "." + player_column[0]);
+                counter[0]++;
+            } else {
+                Rbonus(maze, bonus, counter, player_row, player_column);
+            }
         } else {
-            System.out.println("Cannot move up!");
+            System.out.println("Maze completed. You can't go up!");
         }
     }
 
