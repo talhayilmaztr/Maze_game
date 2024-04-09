@@ -124,13 +124,17 @@ public class Maze_game {
         }
     }
 
-    public static void down(int counter[], char maze[][], int player_row[], int player_column[]) {
+    public static void down(int counter[], char maze[][], int player_row[], int player_column[], char bonus[]) {
         if (player_row[0] < 14) {
-            player_row[0]++;
-            System.out.println("Moved down and your current position is: " + player_row[0] + "." + player_column[0]);
-            counter[0]++;
+            if (maze[player_row[0] + 1][player_column[0]] != '#') {
+                player_row[0]++;
+                System.out.println("You went down and your current position is: " + player_row[0] + "." + player_column[0]);
+                counter[0]++;
+            } else {
+                Rbonus(maze, bonus, counter, player_row, player_column);
+            }
         } else {
-            System.out.println("Cannot move down!");
+            System.out.println("Maze completed. You can't go down!");
         }
     }
 
