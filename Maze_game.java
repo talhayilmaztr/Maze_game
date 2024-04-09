@@ -85,6 +85,11 @@ public class Maze_game {
                 case "d":
                     right(counter, maze, player_row, player_column);
                     break;
+                case "+":
+                    useBonus(bonus, maze, counter, player_row, player_column);
+                    break;
+                default:
+                    System.out.println("You entered an undefined key. Please enter one of W A S D..");
 
             }
             if (counter[0] % 5 == 0 && counter[0] > 0) {
