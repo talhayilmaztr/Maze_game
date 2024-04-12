@@ -104,14 +104,18 @@ public class Maze_game {
         }
     }
 
-    public static void printMaze(char maze[][]) {
+    public static void printMaze(char maze[][], int player_row[], int player_column[]) {
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[0].length; j++) {
+                if (i == player_row[0] && j == player_column[0]) {
+                System.out.print('X' + "  "); 
+            } else {
                 System.out.print(maze[i][j] + "  ");
+            }
             }
             System.out.println();
         }
-        System.out.println();
+       System.out.println();
     }
 
     public static void up(int counter[], char maze[][], int player_row[], int player_column[], char bonus[]) {
