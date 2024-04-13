@@ -62,7 +62,7 @@ public class Maze_game {
 
         boolean isGameRunning = true;
         while (isGameRunning) {
-            printMaze(maze);
+            printMaze(maze, player_row, player_column);
             collectBonus(maze, bonus_index_counter, bonus, player_row, player_column);
             mine(maze, bonus, counter, player_row, player_column);
             wall(maze, bonus, counter, player_row, player_column);
@@ -74,16 +74,16 @@ public class Maze_game {
             String move = input.next();
             switch (move) {
                 case "w":
-                    up(counter, maze, player_row, player_column);
+                    up(counter, maze, player_row, player_column,bonus);
                     break;
                 case "s":
-                    down(counter, maze, player_row, player_column);
+                    down(counter, maze, player_row, player_column,bonus);
                     break;
                 case "a":
-                    left(counter, maze, player_row, player_column);
+                    left(counter, maze, player_row, player_column,bonus);
                     break;
                 case "d":
-                    right(counter, maze, player_row, player_column);
+                    right(counter, maze, player_row, player_column,bonus);
                     break;
                 case "+":
                     useBonus(bonus, maze, counter, player_row, player_column);
