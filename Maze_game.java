@@ -283,9 +283,9 @@ public class Maze_game {
 public static void Tbonus(char bonus[], int counter[], char maze[][], int player_row[], int player_column[]) {
 
     boolean foundTbonus = false;
-        for (int i = 0; i < bonus.length; i++) {
-    if (bonus[i] == 'T') {
-        foundTbonus = true;
+    for (int i = 0; i < bonus.length; i++) {
+        if (bonus[i] == 'T') {
+            foundTbonus = true;
 
             System.out.println("Enter the x and y coordinates of the location you want to teleport to..");
             bonus[i] = ' ';
